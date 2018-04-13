@@ -1,15 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/head :: head(title='Registration Page')"></head>
+<head th:replace="fragments/head :: head(title='Registration Page 1')"></head>
 
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12">
-				<h1>Registration Stage 1</h1>
+			<div class="col-md-12">
+				<h1>Personal Information (Stage 1)</h1>
 				<hr />
-				<a th:href="@{'~' + ${flowExecutionUrl} + '&_eventId_home'}">Home</a>
+				<a th:href="@{'~' + ${flowExecutionUrl} + '&_eventId_home'}" class="btn btn-danger">Home</a>
+
+				<form method="post" th:object="${personalInfo}" >
+					<div class="form-group row">
+						<label for="username" class="col-sm-2 col-form-label">Username</label>
+						<div class="col-sm-10">
+							<input th:field="*{username}" type="text" class="form-control" id="username" placeholder="Username" autofocus />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="password" class="col-sm-2 col-form-label">Password</label>
+						<div class="col-sm-10">
+							<input th:field="*{password}" type="password" class="form-control" id="password" placeholder="Password" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="firstname" class="col-sm-2 col-form-label">First Name</label>
+						<div class="col-sm-10">
+							<input th:field="*{firstname}" type="text" class="form-control" id="firstname" placeholder="First Name" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="lastname" class="col-sm-2 col-form-label">Last Name</label>
+						<div class="col-sm-10">
+							<input th:field="*{lastname}" type="text" class="form-control" id="lastname" placeholder="Last Name" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-sm-10">
+							<button type="submit" class="btn btn-primary" name="_eventId_billing">Next (Billing) &raquo;</button>
+						</div>
+					</div>
+				</form>
+
 			</div>
 		</div>
 	</div>

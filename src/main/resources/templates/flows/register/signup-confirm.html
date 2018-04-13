@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head(title='Registration Page 3')"></head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Confirm Details (Stage 3)</h1>
+				<hr />
+				<a th:href="@{'~' + ${flowExecutionUrl} + '&_eventId_home'}" class="btn btn-danger">Home</a>
+
+				<form method="post">
+					
+					<button type="submit" class="btn btn-warning" name="_eventId_personal">&laquo; Goto Personal</button>					
+					<button type="submit" class="btn btn-warning" name="_eventId_billing">&laquo; Goto Billing</button>
+										
+					<div class="form-group row">
+						<div class="col-sm-10">
+							<button type="submit" class="btn btn-success" name="_eventId_success">Register &raquo;</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+	<script th:replace="fragments/scripts :: scripts"></script>
+</body>
+
+</html>

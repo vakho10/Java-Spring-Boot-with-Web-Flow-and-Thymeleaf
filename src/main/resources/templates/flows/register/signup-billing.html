@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head(title='Registration Page 2')"></head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Billing Information (Stage 2)</h1>
+				<hr />
+				<a th:href="@{'~' + ${flowExecutionUrl} + '&_eventId_home'}" class="btn btn-danger">Home</a>
+
+				<form method="post" th:object="${billingInfo}" >
+					<div class="form-group row">
+						<label for="address" class="col-sm-2 col-form-label">Address</label>
+						<div class="col-sm-10">
+							<input th:field="*{address}" type="text" class="form-control" id="address" placeholder="Address" autofocus />
+						</div>
+					</div>					
+					<div class="form-group row">
+						<div class="col-sm-10">							
+							<button type="submit" class="btn btn-secondary" name="_eventId_personal">&laquo; Previous (Personal)</button>
+							<button type="submit" class="btn btn-primary" name="_eventId_confirm">Next (Confirm) &raquo;</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+	<script th:replace="fragments/scripts :: scripts"></script>
+</body>
+
+</html>

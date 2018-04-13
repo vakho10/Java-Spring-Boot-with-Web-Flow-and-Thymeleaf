@@ -4,10 +4,26 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
+	<var name="personalInfo" class="com.example.demo.models.PersonalInfo" />
+	<var name="billingInfo" class="com.example.demo.models.BillingInfo" />
+
 	<!-- is the start state -->
-	<view-state id="personal" view="flows/register/signup-personal"></view-state>
+	<view-state id="personal" view="flows/register/signup-personal" model="personalInfo">
+		<transition on="billing" to="billing" />
+	</view-state>
+
+	<view-state id="billing" view="flows/register/signup-billing" model="billingInfo">
+		<transition on="personal" to="personal" />
+		<transition on="confirm" to="confirm" />
+	</view-state>
+	<view-state id="confirm" view="flows/register/signup-confirm">
+		<transition on="personal" to="personal" />
+		<transition on="billing" to="billing" />
+		<transition on="success" to="success" />
+	</view-state>
 
 	<!-- end state -->
+	<end-state id="success" view="flows/register/signup-success" />
 	<end-state id="home" view="externalRedirect:contextRelative:/" />
 
 	<!-- Global Transition -->

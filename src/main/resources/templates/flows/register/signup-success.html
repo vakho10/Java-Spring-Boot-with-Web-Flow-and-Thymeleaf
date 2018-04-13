@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head(title='Registration Page')"></head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>Success Page :)</h1>
+				<hr />
+				
+				
+				
+				<a th:href="@{'~' + ${flowExecutionUrl} + '&_eventId_home'}">Home</a>
+			</div>
+		</div>
+	</div>
+	<script th:replace="fragments/scripts :: scripts"></script>
+</body>
+
+</html>
