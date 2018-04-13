@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<htmL xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Home Page</title>
-<meta charset="utf-8" />
-</head>
-<body>
-	<h1 th:text="${message}"></h1>
+<html xmlns:th="http://www.thymeleaf.org">
 
-	<a th:href="@{/register}">Sign Up</a>
+<head th:replace="fragments/head :: head(title='Home Page')"></head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1 th:text="${message}"></h1>
+				<hr />				
+				<a th:href="@{/register}">Sign Up</a>
+			</div>
+		</div>
+	</div>
+	<script th:replace="fragments/scripts :: scripts"></script>
 </body>
-</htmL>
+
+</html>

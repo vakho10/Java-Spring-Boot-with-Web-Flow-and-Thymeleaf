@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<htmL xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Home Page</title>
-<meta charset="utf-8" />
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head(title='Registration Page')"></head>
+
 <body>
-	<h1>Registration</h1>
-	<a th:href="@{'~' + ${flowExecutionUrl} + '&_eventId_home'}">Home</a>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>Registration Stage 1</h1>
+				<hr />
+				<a th:href="@{'~' + ${flowExecutionUrl} + '&_eventId_home'}">Home</a>
+			</div>
+		</div>
+	</div>
+	<script th:replace="fragments/scripts :: scripts"></script>
 </body>
-</htmL>
+
+</html>
