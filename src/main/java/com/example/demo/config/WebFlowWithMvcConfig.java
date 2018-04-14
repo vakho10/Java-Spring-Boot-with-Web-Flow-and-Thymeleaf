@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.webflow.config.AbstractFlowConfiguration;
 import org.springframework.webflow.definition.registry.FlowDefinitionRegistry;
 import org.springframework.webflow.engine.builder.ViewFactoryCreator;
@@ -21,6 +22,9 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 @Configuration
 public class WebFlowWithMvcConfig extends AbstractFlowConfiguration {
+
+	@Autowired
+	private LocalValidatorFactoryBean localValidatorFacotryBean;
 
 	@Bean
 	public FlowDefinitionRegistry flowRegistry() {
@@ -41,10 +45,10 @@ public class WebFlowWithMvcConfig extends AbstractFlowConfiguration {
 	public FlowBuilderServices flowBuilderServices() {
 		return getFlowBuilderServicesBuilder() //
 				.setViewFactoryCreator(this.mvcViewFactoryCreator()) // Important!
-				.build();
+				.setValidator(this.localValidatorFacotryBean).build();
 	}
 	// ----------------------------------------------------------
-	
+
 	@Bean
 	public FlowHandlerMapping flowHandlerMapping() {
 		FlowHandlerMapping handlerMapping = new FlowHandlerMapping();
@@ -97,5 +101,5 @@ public class WebFlowWithMvcConfig extends AbstractFlowConfiguration {
 		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
 		templateEngine.setTemplateResolver(this.templateResolver());
 		return templateEngine;
-	}	
+	}
 }

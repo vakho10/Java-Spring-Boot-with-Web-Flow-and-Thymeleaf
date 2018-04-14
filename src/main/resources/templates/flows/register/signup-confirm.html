@@ -7,22 +7,30 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>Confirm Details (Stage 3)</h1>
-				<hr />
-				<a th:href="@{'~' + ${flowExecutionUrl} + '&_eventId_home'}" class="btn btn-danger">Home</a>
-
-				<form method="post">
-					
-					<button type="submit" class="btn btn-warning" name="_eventId_personal">&laquo; Goto Personal</button>					
-					<button type="submit" class="btn btn-warning" name="_eventId_billing">&laquo; Goto Billing</button>
-										
-					<div class="form-group row">
-						<div class="col-sm-10">
-							<button type="submit" class="btn btn-success" name="_eventId_success">Register &raquo;</button>
+				<form method="post" th:object="${registerModel}">
+					<h1>Confirm Details (Stage 3)</h1>
+					<hr />
+					<a th:href="@{'~' + ${flowExecutionUrl} + '&_eventId_home'}" class="btn btn-danger">Home</a>
+	
+					<div class="row">
+						<div class="col-md-6">
+							<h2>Personal Info</h2>
+							<p th:text="${registerModel.personalInfo.username}"></p>
+							<p th:text="${registerModel.personalInfo.firstname}"></p>
+							<p th:text="${registerModel.personalInfo.lastname}"></p>
+							<button type="submit" class="btn btn-warning" name="_eventId_personal">&laquo; Goto Personal</button>					
+						</div>
+						<div class="col-md-6">
+							<h2>Billing Info</h2>
+							<p th:text="${registerModel.billingInfo.address}"></p>
+							<button type="submit" class="btn btn-warning" name="_eventId_billing">&laquo; Goto Billing</button>
 						</div>
 					</div>
-				</form>
-
+			        <div class="alert alert-danger" th:if="${!#arrays.isEmpty(flowRequestContext.messageContext.getMessagesBySource('registration'))}">
+			        	<span th:each="err : ${flowRequestContext.messageContext.getMessagesBySource('registration')}" th:text="${err.text}"></span>
+		        	</div>
+					<button type="submit" class="btn btn-success" name="_eventId_submit">Register &raquo;</button>
+				</form>				
 			</div>
 		</div>
 	</div>

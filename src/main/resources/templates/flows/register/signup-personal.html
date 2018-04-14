@@ -16,24 +16,35 @@
 						<label for="username" class="col-sm-2 col-form-label">Username</label>
 						<div class="col-sm-10">
 							<input th:field="*{username}" type="text" class="form-control" id="username" placeholder="Username" autofocus />
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="password" class="col-sm-2 col-form-label">Password</label>
 						<div class="col-sm-10">
 							<input th:field="*{password}" type="password" class="form-control" id="password" placeholder="Password" />
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="confirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+						<div class="col-sm-10">
+							<input th:field="*{confirmPassword}" type="password" class="form-control" id="confirmPassword" placeholder="Re-enter password" />
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></small>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="firstname" class="col-sm-2 col-form-label">First Name</label>
 						<div class="col-sm-10">
 							<input th:field="*{firstname}" type="text" class="form-control" id="firstname" placeholder="First Name" />
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></small>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="lastname" class="col-sm-2 col-form-label">Last Name</label>
 						<div class="col-sm-10">
 							<input th:field="*{lastname}" type="text" class="form-control" id="lastname" placeholder="Last Name" />
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></small>
 						</div>
 					</div>
 					<div class="form-group row">
