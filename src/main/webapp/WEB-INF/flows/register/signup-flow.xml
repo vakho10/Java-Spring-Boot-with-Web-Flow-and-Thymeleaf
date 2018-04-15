@@ -9,7 +9,8 @@
 	
 	<!-- returning and adding inside flow registerModel instance -->
 	<on-start>
-		<evaluate expression="registerHandler.init()" result="flowScope.registerModel" />
+		<evaluate expression="registerHandler.init()"
+			result="flowScope.registerModel" />
 	</on-start>
 
 	<!-- is the start state -->

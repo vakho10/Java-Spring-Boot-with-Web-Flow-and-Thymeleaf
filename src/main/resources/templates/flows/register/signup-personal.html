@@ -11,7 +11,14 @@
 				<hr />
 				<a th:href="@{'~' + ${flowExecutionUrl} + '&_eventId_home'}" class="btn btn-danger">Home</a>
 
-				<form method="post" th:object="${personalInfo}" >
+				<form method="post" th:object="${personalInfo}" enctype="multipart/form-data">
+					<div class="form-group row">
+						<label for="image" class="col-sm-2 col-form-label">Username</label>
+						<div class="col-sm-10">
+							<input type="file" class="form-control" id="image" placeholder="Image file" name="image" />
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('imageContent')}" th:errors="*{imageContent}"></small>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label for="username" class="col-sm-2 col-form-label">Username</label>
 						<div class="col-sm-10">

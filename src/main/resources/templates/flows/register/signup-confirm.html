@@ -15,6 +15,9 @@
 					<div class="row">
 						<div class="col-md-6">
 							<h2>Personal Info</h2>
+							<p>
+								<img class="img-fluid" th:src="@{'data:image/png;base64,'+${registerModel.personalInfo.getImageBase64()}}" />
+							</p>
 							<p th:text="${registerModel.personalInfo.username}"></p>
 							<p th:text="${registerModel.personalInfo.firstname}"></p>
 							<p th:text="${registerModel.personalInfo.lastname}"></p>
